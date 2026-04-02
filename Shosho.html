@@ -12,8 +12,10 @@ body {
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
     text-align:center;
+    padding:10px;
+    box-sizing:border-box;
 }
 
 #login, #content {
@@ -21,6 +23,8 @@ body {
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    width:100%;
+    max-width:600px;
 }
 
 input {
@@ -30,6 +34,8 @@ input {
     border-radius:5px;
     border:1px solid #ccc;
     text-align:center;
+    width:80%;
+    max-width:300px;
 }
 
 button {
@@ -40,14 +46,14 @@ button {
     border-radius:5px;
     font-size:16px;
     cursor:pointer;
+    width:50%;
+    max-width:200px;
 }
 
 #content {
     visibility:hidden;
     opacity:0;
     transition: opacity 1.5s ease;
-    width:90%;
-    max-width:600px;
 }
 
 #content.show {
@@ -57,15 +63,18 @@ button {
 
 h1 {
     color:#4B0082;
-    font-size:28px;
+    font-size:24px;
     margin-bottom:10px;
+    word-break: break-word;
 }
 
 p {
     color:#4B0082;
-    font-size:18px;
+    font-size:16px;
     margin-bottom:20px;
     line-height:1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 img {
@@ -73,10 +82,26 @@ img {
     max-height:250px;
     margin:10px 0;
     border-radius:10px;
+    object-fit:cover;
 }
 
 audio {
     margin-top:20px;
+}
+
+@media (max-width:480px) {
+    h1 {
+        font-size:20px;
+    }
+    p {
+        font-size:14px;
+    }
+    button {
+        width:70%;
+    }
+    input {
+        width:90%;
+    }
 }
 </style>
 </head>
@@ -90,7 +115,7 @@ audio {
 
 <div id="content">
     <h1>لشيرين 💜</h1>
-    <p>انا عارف اني غلطت و غلطت جامد كمان و عارف انك مش هترجعي زي الاول بسرعه و انا مقدر دا يا حبيبتي وانا هفضل مديكي مساحتك بس انا هفضل موجود دايما وانا دايما هكون الي بيحب يسمعك على طول و بيحب يشوفك مبسوطه دايما عشان انتي روحي انا بس عاوزك تسامحيني وترجعي معايا بتحسي بالراحه والامان تاني حتى لو مش بسرعه انتي تستاهلي احاول عشانك انا اسف يا حبيبتي مش هتتكرر تاني  </p>
+    <p>انا عارف اني غلطت و غلطت جامد كمان و عارف انك مش هترجعي زي الاول بسرعه و انا مقدر دا يا حبيبتي وانا هفضل مديكي مساحتك بس انا هفضل موجود دايما وانا دايما هكون الي بيحب يسمعك على طول و بيحب يشوفك مبسوطه دايما عشان انتي روحي انا بس عاوزك تسامحيني وترجعي معايا بتحسي بالراحه والامان تاني حتى لو مش بسرعه انتي تستاهلي احاول عشانك انا اسف يا حبيبتي مش هتتكرر تاني</p>
     <p>حقك عليا يا نور عيني💜</p>
     <p>بحبك من كل قلبي يا احلى حاجه حصلتلي في حياتي 💜</p>
     <img src="1.jpg" alt="صورة">
@@ -109,7 +134,7 @@ function checkPassword(){
         document.getElementById('login').style.display = 'none';
         let content = document.getElementById('content');
         content.classList.add('show');
-        audio.play().catch(()=>{}); // لتجنب منع autoplay
+        audio.play().catch(()=>{});
     } else {
         alert('كلمة السر غلط');
     }
