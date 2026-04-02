@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هدية لشيرين</title>
+<style>
+body {
+    margin:0;
+    font-family:sans-serif;
+    background-color:#E6E6FA;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+#login, #content {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+input {
+    padding:10px;
+    margin:10px;
+    font-size:16px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+button {
+    padding:10px 20px;
+    background-color:#9370DB;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#content {
+    visibility:hidden;
+    opacity:0;
+    transition: opacity 1.5s ease;
+    width:90%;
+    max-width:600px;
+}
+
+#content.show {
+    visibility:visible;
+    opacity:1;
+}
+
+h1 {
+    color:#4B0082;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+p {
+    color:#4B0082;
+    font-size:18px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+img {
+    max-width:100%;
+    max-height:250px;
+    margin:10px 0;
+    border-radius:10px;
+}
+
+audio {
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div id="login">
+    <h2>أدخل كلمة السر لتفتح هديتك 💜</h2>
+    <input type="password" id="password" placeholder="كلمة السر">
+    <button onclick="checkPassword()">افتح الهدية</button>
+</div>
+
+<div id="content">
+    <h1>لشيرين 💜</h1>
+    <p>انا عارف اني غلطت و غلطت جامد كمان و عارف انك مش هترجعي زي الاول بسهوله انا بس عاوزك تسامحيني وترجعي معايا بتحسي بالراحه والامان تاني انا اسف يا حبيبتي مش هتتكرر تاني </p>
+    <img src="1.jpg" alt="صورة">
+    <img src="2.jpg" alt="صورة">
+    <audio id="bgAudio" loop>
+      <source src="mu.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+let audio = document.getElementById('bgAudio');
+
+function checkPassword(){
+    let pass = document.getElementById('password').value;
+    if(pass === '1234'){
+        document.getElementById('login').style.display = 'none';
+        let content = document.getElementById('content');
+        content.classList.add('show');
+        audio.play().catch(()=>{}); // لتجنب منع autoplay
+    } else {
+        alert('كلمة السر غلط');
+    }
+}
+</script>
+
+</body>
+</html>
